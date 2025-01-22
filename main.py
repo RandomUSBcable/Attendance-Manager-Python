@@ -9,7 +9,7 @@
 def getSubjects():
     subjects = []
     while True:
-        subject = input("Enter a subject (or 'q' to quit): ")
+        subject: str = input("Enter a subject (or 'q' to quit): ")
         if (subject.lower() == 'q'):
             break
         elif(subject.lower() in subjects):
@@ -20,7 +20,7 @@ def getSubjects():
 
 
 def getAttendance(subjects):
-    attendance = {}
+    attendance = {} 
     for i in subjects:
         while True:
             temp = input("Enter current attendance percentage for " + i + " (in %): ")
@@ -35,7 +35,8 @@ def getAttendance(subjects):
 def getTimeTable(subjectList):
     #   print("I need some basic info first")
     #   this is to get the number of days and such; i'll do that later, i just want MVP for this commit
-    timeTable = [[],[],[],[],[]]
+    timeTable = [[],[]]
+    #   timeTable = [[],[],[],[],[]]
     for day in timeTable:
         for period in range(1, 7+1):
             while True:
@@ -45,8 +46,24 @@ def getTimeTable(subjectList):
                     break
                 else:
                     print("this subject was not in the list you know...")
+    return timeTable
+
+def showTimeTable(timeTableObj):
+    for i in timeTableObj:
+        print(i, sep="   ")
+        '''
+        for j in i:
+            print(j, end = "\t")
+        print()
+        '''
+
 
 
 subjectList = getSubjects()
+
 currentAttendancePerSubject = getAttendance(subjectList)
+
 timeTable = getTimeTable(subjectList)
+
+showTimeTable(timeTable)
+
